@@ -2,15 +2,17 @@
 
 A PHP wrapper for [AIDPay](https://www.aidchain.co/aidpay) APIs
 
+Official documentation on [https://apidoc.aidpay.io](https://apidoc.aidpay.io)
+
 ## Install
 
 ```
 composer require aidcoinco/aidpay-php
 ```
 
-## Generate Api Key and Secret
+## Generate API Key and Secret
 
-Contact AidCoin to have your Api Key and Secret [here](https://www.aidchain.co/aidpay).
+Contact AidCoin to have your API Key and Secret [here](https://www.aidchain.co/aidpay).
 
 
 ## Usage
@@ -359,6 +361,9 @@ result:
 
 When your payment will be EXECUTED you will receive a POST to your return url provided during the setup process.
 
+You should sign the call BODY with your API Secret and then check that it matches our provided sign in HEADERS.
+
+
 ```bash
 curl -X POST \
   https://your-provided-return-url \
@@ -391,6 +396,6 @@ $body = json_decode(file_get_contents('php://input'), true);
 if ($aidPay->isValidSignature($headers['sign'], $body)) {
     // Do stuffs (i.e. set your payment as paid). Your payment has been executed.
 } else {
-    // discard. This is not a valid call.
+    // Discard. This is not a valid call.
 }
 ```
