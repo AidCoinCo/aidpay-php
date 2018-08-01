@@ -1,0 +1,29 @@
+{
+  "name": "aidcoinco/aidpay-php",
+  "description": "A PHP wrapper for AIDPay API",
+  "keywords": ["aidcoin", "aidpay", "aidchain", "exchange", "crypto", "charity", "client"],
+  "type": "library",
+  "homepage": "https://github.com/aidcoinco/aidpay-php",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/aidcoinco/aidpay-php/issues",
+    "source": "https://github.com/aidcoinco/aidpay-php"
+  },
+  "authors": [
+    {
+      "name": "Vittorio Minacori",
+      "homepage": "https://github.com/vittominacori"
+    }
+  ],
+  "require": {
+    "ext-curl": "*",
+    "ext-json": "*",
+    "php": ">=7.0.0",
+    "mashape/unirest-php": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "AidCoin\\": "src/"
+    }
+  }
+}
