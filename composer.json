@@ -1,6 +1,6 @@
 {
   "name": "aidcoinco/aidpay-php",
-  "description": "A PHP wrapper for AIDPay API",
+  "description": "A PHP wrapper for AIDPay APIs",
   "keywords": ["aidcoin", "aidpay", "aidchain", "exchange", "crypto", "charity", "client"],
   "type": "library",
   "homepage": "https://github.com/aidcoinco/aidpay-php",
