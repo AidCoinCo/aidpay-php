@@ -244,7 +244,7 @@ Params:
 + orderId: a reference for the customer (i.e. his progressive order id). Will be sent for reference in notifications
 + fromCurrency: the currency from which to start the transaction
 + invoicedAmount: the amount to convert (in "fromCurrency")
-+ email: your notification email
++ email: your customer notification email
 + itemId: the item id of the charity to send the funds to
 + refundAddress: an optional address "fromCurrency" compatible where to receive refund in case of problems with the blockchain
 
