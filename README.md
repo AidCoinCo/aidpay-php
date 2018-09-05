@@ -248,7 +248,7 @@ Params:
 + invoicedAmount: the amount to convert (in "fromCurrency")
 + email: your customer notification email
 + itemId: the item id of the charity to send the funds to
-+ refundAddress: an optional address compatible with "fromCurrency" for receiving refund in case of problems with the blockchain
++ refundAddress: an optional address compatible with "fromCurrency" for receiving refunds in case of problems with the blockchain
 
 ```php
 $aidPay->createDonation(
@@ -298,7 +298,7 @@ Params:
 + fromFiat: the FIAT currency from which to start the conversion
 + fiatAmount: the amount to convert (in "fromFiat")
 + email: your customer notification email
-+ refundAddress: an optional address compatible with "fromCurrency" for receiving refund in case of problems with the blockchain
++ refundAddress: an optional address compatible with "fromCurrency" for receiving refunds in case of problems with the blockchain
 
 ```php
 $aidPay->createOrder(
