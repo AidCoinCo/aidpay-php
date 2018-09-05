@@ -123,6 +123,36 @@ class AidPay
     }
 
     /**
+     * @param string $orderId
+     * @param string $fromCurrency
+     * @param string $fromFiat
+     * @param float $fiatAmount
+     * @param string $email
+     * @param string|null $refundAddress
+     * @return mixed
+     * @throws \Exception
+     */
+    public function createOrder(
+        $orderId,
+        $fromCurrency,
+        $fromFiat,
+        $fiatAmount,
+        $email,
+        $refundAddress = null
+    ) {
+        $body = [
+            'orderId' => $orderId,
+            'fromCurrency' => $fromCurrency,
+            'fromFiat' => $fromFiat,
+            'fiatAmount' => $fiatAmount,
+            'email' => $email,
+            'refundAddress' => $refundAddress
+        ];
+
+        return $this->post('order', $body);
+    }
+
+    /**
      * @param string $uuid
      * @return mixed
      * @throws \Exception

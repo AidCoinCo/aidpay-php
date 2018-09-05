@@ -237,6 +237,8 @@ result:
 
 #### createDonation
 
+ONLY FOR NO-PROFIT ACCOUNTS
+
 Description:
 + Create a donation.
 
@@ -246,7 +248,7 @@ Params:
 + invoicedAmount: the amount to convert (in "fromCurrency")
 + email: your customer notification email
 + itemId: the item id of the charity to send the funds to
-+ refundAddress: an optional address "fromCurrency" compatible where to receive refund in case of problems with the blockchain
++ refundAddress: an optional address compatible with "fromCurrency" for receiving refund in case of problems with the blockchain
 
 ```php
 $aidPay->createDonation(
@@ -278,6 +280,56 @@ result:
   "refundAddress": "1Nv92z71iinNVPncrDm4RPHyo17S9bEVPG",
   "createdAt": "2018-07-26T14:44:28+02:00",
   "expireDate": "2018-07-26T15:04:26+02:00",
+  "chargedFee": "3.000000000000000000"
+}
+```
+
+
+#### createOrder
+
+ONLY FOR MERCHANT ACCOUNTS
+
+Description:
++ Create an order.
+
+Params:
++ orderId: a reference for the customer (i.e. his progressive order id). Will be sent for reference in notifications
++ fromCurrency: the currency from which to start the transaction
++ fromFiat: the FIAT currency from which to start the conversion
++ fiatAmount: the amount to convert (in "fromFiat")
++ email: your customer notification email
++ refundAddress: an optional address compatible with "fromCurrency" for receiving refund in case of problems with the blockchain
+
+```php
+$aidPay->createOrder(
+    'O-12345',
+    'BTC',
+    'EUR',
+    1000,
+    'example@aidcoin.co',
+    '1Nv92z71iinNVPncrDm4RPHyo17S9bEVPG'
+);
+```
+
+result: 
+
+```json
+{
+  "uuid": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+  "orderId": "O-12345",
+  "status": "WAITING_FOR_DEPOSIT",
+  "email": "example@aidcoin.co",
+  "depositAddress": "1HfL94JWjmmjroyAHTDhRQqUwZ7PR4JoUZ",
+  "destination": "0x4Aa0f67D9A0666b9Dd0Ee6d397334903AE337e1E",
+  "exchangeRate": "90090.090090090000000000",
+  "fromCurrency": "BTC",
+  "toCurrency": "AID",
+  "invoicedAmount": "0.1737232",
+  "orderedAmount": "15647.73811945",
+  "hash": null,
+  "refundAddress": "1Nv92z71iinNVPncrDm4RPHyo17S9bEVPG",
+  "createdAt": "2018-09-05T10:40:46+02:00",
+  "expireDate": "2018-09-05T11:00:44+02:00",
   "chargedFee": "3.000000000000000000"
 }
 ```
