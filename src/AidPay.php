@@ -24,15 +24,17 @@ class AidPay
      * AidPay constructor.
      * @param string $apiKey
      * @param string $apiSecret
+     * @param string $customEndpoint
      * @throws \Exception
      */
-    public function __construct($apiKey, $apiSecret)
+    public function __construct($apiKey, $apiSecret, $customEndpoint = '')
     {
         if (empty($apiKey) || empty($apiSecret)) {
             throw new \Exception('Invalid api key or secret');
         }
         self::$apiKey = $apiKey;
         self::$apiSecret = $apiSecret;
+        self::$endpoint = $customEndpoint ? $customEndpoint : self::$endpoint;
 
         Unirest\Request::verifyPeer(false);
     }
