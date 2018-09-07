@@ -249,15 +249,17 @@ Params:
 + email: your customer notification email
 + itemId: the item id of the charity to send the funds to
 + refundAddress: an optional address compatible with "fromCurrency" for receiving refunds in case of problems with the blockchain
++ return: the return URL that will be used to redirect your buyers back to your site 
 
 ```php
 $aidPay->createDonation(
     'O-12345',
     'BTC',
-    0.1,
+    '0.1',
     'example@aidcoin.co',
     '1',
-    '1Nv92z71iinNVPncrDm4RPHyo17S9bEVPG'
+    '1Nv92z71iinNVPncrDm4RPHyo17S9bEVPG',
+    'https://your.client/return/url'
 );
 ```
 
@@ -280,7 +282,8 @@ result:
   "refundAddress": "1Nv92z71iinNVPncrDm4RPHyo17S9bEVPG",
   "createdAt": "2018-07-26T14:44:28+02:00",
   "expireDate": "2018-07-26T15:04:26+02:00",
-  "chargedFee": "3.000000000000000000"
+  "chargedFee": "3.000000000000000000",
+  "orderLink": "https://local.aidchain.io/aidpay/payment/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee?return=https%3A//your.client/return/url" // redirect your user here if you want to use the AidPay interface
 }
 ```
 
@@ -299,15 +302,17 @@ Params:
 + fiatAmount: the amount to convert (in "fromFiat")
 + email: your customer notification email
 + refundAddress: an optional address compatible with "fromCurrency" for receiving refunds in case of problems with the blockchain
++ return: the return URL that will be used to redirect your buyers back to your site 
 
 ```php
 $aidPay->createOrder(
     'O-12345',
     'BTC',
     'EUR',
-    1000,
+    '1000',
     'example@aidcoin.co',
-    '1Nv92z71iinNVPncrDm4RPHyo17S9bEVPG'
+    '1Nv92z71iinNVPncrDm4RPHyo17S9bEVPG',
+    'https://your.client/return/url'
 );
 ```
 
@@ -330,7 +335,8 @@ result:
   "refundAddress": "1Nv92z71iinNVPncrDm4RPHyo17S9bEVPG",
   "createdAt": "2018-09-05T10:40:46+02:00",
   "expireDate": "2018-09-05T11:00:44+02:00",
-  "chargedFee": "3.000000000000000000"
+  "chargedFee": "3.000000000000000000",
+  "orderLink": "https://local.aidchain.io/aidpay/payment/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee?return=https%3A//your.client/return/url" // redirect your user here if you want to use the AidPay interface
 }
 ```
 

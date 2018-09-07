@@ -94,10 +94,11 @@ class AidPay
     /**
      * @param string $orderId
      * @param string $fromCurrency
-     * @param float $amount
+     * @param string $amount
      * @param string $email
      * @param integer $itemId
      * @param string|null $refundAddress
+     * @param string $return
      * @param string $itemType
      * @return mixed
      * @throws \Exception
@@ -109,6 +110,7 @@ class AidPay
         $email,
         $itemId,
         $refundAddress = null,
+        $return = '',
         $itemType = 'charity'
     ) {
         $body = [
@@ -118,7 +120,8 @@ class AidPay
             'email' => $email,
             'itemId' => $itemId,
             'itemType' => $itemType,
-            'refundAddress' => $refundAddress
+            'refundAddress' => $refundAddress,
+            'return' => $return
         ];
 
         return $this->post('donation', $body);
@@ -128,9 +131,10 @@ class AidPay
      * @param string $orderId
      * @param string $fromCurrency
      * @param string $fromFiat
-     * @param float $fiatAmount
+     * @param string $fiatAmount
      * @param string $email
      * @param string|null $refundAddress
+     * @param string $return
      * @return mixed
      * @throws \Exception
      */
@@ -140,7 +144,8 @@ class AidPay
         $fromFiat,
         $fiatAmount,
         $email,
-        $refundAddress = null
+        $refundAddress = null,
+        $return = ''
     ) {
         $body = [
             'orderId' => $orderId,
@@ -148,7 +153,8 @@ class AidPay
             'fromFiat' => $fromFiat,
             'fiatAmount' => $fiatAmount,
             'email' => $email,
-            'refundAddress' => $refundAddress
+            'refundAddress' => $refundAddress,
+            'return' => $return
         ];
 
         return $this->post('order', $body);
