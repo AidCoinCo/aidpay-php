@@ -425,7 +425,7 @@ result:
 
 ### Receive Call
 
-When your payment will be EXECUTED you will receive a POST to your return url provided during the setup process.
+When your payment has been `EXECUTED` you will receive a POST to the `return_url` provided during the setup process.
 
 You should sign the call BODY with your API Secret and then check that it matches our provided sign in HEADERS.
 
