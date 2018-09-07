@@ -283,9 +283,13 @@ result:
   "createdAt": "2018-07-26T14:44:28+02:00",
   "expireDate": "2018-07-26T15:04:26+02:00",
   "chargedFee": "3.000000000000000000",
-  "orderLink": "https://local.aidchain.io/aidpay/payment/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee?return=https%3A//your.client/return/url" // redirect your user here if you want to use the AidPay interface
+  "orderLink": "https://www.aidchain.co/aidpay/payment/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee?return=https%3A//your.client/return/url"
 }
 ```
+
+The `invoicedAmount` will need to be sent to the `depositAddress` (by your users or through your system) within 20 minutes.   
+
+If you want to use the AidPay interface redirect your users to `orderLink`.
 
 
 #### createOrder
@@ -336,9 +340,13 @@ result:
   "createdAt": "2018-09-05T10:40:46+02:00",
   "expireDate": "2018-09-05T11:00:44+02:00",
   "chargedFee": "3.000000000000000000",
-  "orderLink": "https://local.aidchain.io/aidpay/payment/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee?return=https%3A//your.client/return/url" // redirect your user here if you want to use the AidPay interface
+  "orderLink": "https://www.aidchain.co/aidpay/payment/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee?return=https%3A//your.client/return/url"
 }
 ```
+
+The `invoicedAmount` will need to be sent to the `depositAddress` (by your users or through your system) within 20 minutes.   
+
+If you want to use the AidPay interface redirect your users to `orderLink`.
 
 
 #### getStatus
