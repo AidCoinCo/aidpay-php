@@ -37,6 +37,7 @@ class AidPay
         self::$endpoint = $customEndpoint ? $customEndpoint : self::$endpoint;
 
         Unirest\Request::verifyPeer(false);
+        Unirest\Request::verifyHost(false);
     }
 
     // public methods
