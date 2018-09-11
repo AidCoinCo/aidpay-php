@@ -83,6 +83,16 @@ class AidPay
     }
 
     /**
+     * @param array $parameters
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getOrders($parameters = [])
+    {
+        return $this->get('orders', $parameters);
+    }
+
+    /**
      * @param string $uuid
      * @return mixed
      * @throws \Exception
