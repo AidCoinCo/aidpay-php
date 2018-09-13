@@ -393,10 +393,12 @@ Description:
 + Returns the customer's order list.
 
 Params:
-+ array with limit (default 12) and offset (default 0) 
++ array with limit (default 12), offset (default 0) and an optional filters['status'] 
+
+Note: status could be ['WAITING_FOR_DEPOSIT','DEPOSIT_RECEIVED','DEPOSIT_CONFIRMED','EXECUTED','REFUNDED','CANCELED','EXPIRED']
 
 ```php
-$aidPay->getOrders(['limit' => 2, 'offset' => 0]);
+$aidPay->getOrders(['limit' => 2, 'offset' => 0, 'filters' => ['status' => 'WAITING_FOR_DEPOSIT']]);
 ```
 
 result: 
