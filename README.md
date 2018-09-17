@@ -230,6 +230,18 @@ result:
   "BTC": {
     "min": "0.000138789473684",
     "max": "0.408954187602"
+  },
+  "USD": {
+    "min": "0.672345",
+    "max": "1867.625"
+  },
+  "EUR": {
+    "min": "0.575163",
+    "max": "1597.675"
+  },
+  "GBP": {
+    "min": "0.531",
+    "max": "1475"
   }
 }
 ```
@@ -357,7 +369,7 @@ Description:
 Params:
 + uuid: the unique id of the payment to search for
 
-Note: status could be ['WAITING_FOR_DEPOSIT','DEPOSIT_RECEIVED','DEPOSIT_CONFIRMED','EXECUTED','REFUNDED','CANCELED','EXPIRED']
+Notes: status could be ['WAITING_FOR_DEPOSIT','DEPOSIT_RECEIVED','DEPOSIT_CONFIRMED','EXECUTED','REFUNDED','CANCELED','EXPIRED']
 
 ```php
 $aidPay->getStatus('aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee');
@@ -395,7 +407,7 @@ Description:
 Params:
 + array with limit (default 12), offset (default 0) and an optional filters['status'] 
 
-Note: status could be ['WAITING_FOR_DEPOSIT','DEPOSIT_RECEIVED','DEPOSIT_CONFIRMED','EXECUTED','REFUNDED','CANCELED','EXPIRED']
+Notes: status could be ['WAITING_FOR_DEPOSIT','DEPOSIT_RECEIVED','DEPOSIT_CONFIRMED','EXECUTED','REFUNDED','CANCELED','EXPIRED']
 
 ```php
 $aidPay->getOrders(['limit' => 2, 'offset' => 0, 'filters' => ['status' => 'WAITING_FOR_DEPOSIT']]);
@@ -496,6 +508,7 @@ When your payment has been `EXECUTED` you will receive a POST to the `return_url
 
 You should sign the call BODY with your API Secret and then check that it matches our provided sign in HEADERS.
 
+Notes: this is a Server To Server http call.
 
 ```bash
 curl -X POST \
