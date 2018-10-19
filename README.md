@@ -31,10 +31,10 @@ use AidCoin\AidPay;
 $aidPay = new AidPay('yourApiKey', 'yourApiSecret');
 ```
 
-### Call APIs
+## Call APIs
 
 
-#### getCharities
+### getCharities
 
 Description:
 + Returns the list of enabled charities.
@@ -75,7 +75,7 @@ result:
 ```
 
 
-#### getCurrencies
+### getCurrencies
 
 Description:
 + Returns the list of enabled currencies as a flat array with the associated DAI rate value.
@@ -207,7 +207,7 @@ result:
 ```
 
 
-#### getLimits
+### getLimits
 
 Description:
 + Returns the min and max amounts of tokens to be exchanged both in DAI and in selected currency.
@@ -247,7 +247,7 @@ result:
 ```
 
 
-#### createDonation
+### createDonation
 
 ONLY FOR NO-PROFIT ACCOUNTS
 
@@ -304,7 +304,7 @@ The `invoicedAmount` will need to be sent to the `depositAddress` (by your users
 If you want to use the AidPay interface redirect your users to `orderLink`.
 
 
-#### createOrder
+### createOrder
 
 ONLY FOR MERCHANT ACCOUNTS
 
@@ -361,7 +361,7 @@ The `invoicedAmount` will need to be sent to the `depositAddress` (by your users
 If you want to use the AidPay interface redirect your users to `orderLink`.
 
 
-#### getStatus
+### getStatus
 
 Description:
 + Returns the status of the payment for a given uuid.
@@ -398,8 +398,7 @@ result:
 }
 ```
 
-
-#### getOrders
+### getOrders
 
 Description:
 + Returns the customer's order list.
@@ -465,8 +464,7 @@ result:
 }
 ```
 
-
-#### deletePayment
+### deletePayment
 
 Description:
 + Delete a payment for a given uuid.
@@ -502,7 +500,7 @@ result:
 ```
 
 
-### Receive Call
+## Receive Call
 
 When your payment has been `EXECUTED` you will receive a POST to the `return_url` provided during the setup process.
 
@@ -540,8 +538,12 @@ $headers = getallheaders();
 $body = json_decode(file_get_contents('php://input'), true);
 
 if ($aidPay->isValidSignature($headers['sign'], $body)) {
-    // Do stuffs (i.e. set your payment as paid). Your payment has been executed.
+    // Do stuff (i.e. set your payment as paid). Your payment has been executed.
 } else {
     // Discard. This is not a valid call.
 }
 ```
+
+## License
+
+Code released under the [MIT License](https://github.com/aidcoinco/aidpay-php/blob/master/LICENSE).

@@ -1,0 +1,25 @@
+{
+  "name": "aidpay-php",
+  "version": "1.0.0",
+  "description": "A PHP wrapper for AIDPay APIs",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "docs:deploy": "vuepress build docs && sh docs/deploy/deploy.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["aidcoin", "aidpay", "aidchain", "exchange", "crypto", "charity", "client"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aidcoinco/aidpay-php.git"
+  },
+  "author": "Vittorio Minacori (https://github.com/vittominacori)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aidcoinco/aidpay-php/issues"
+  },
+  "homepage": "https://github.com/aidcoinco/aidpay-php",
+  "devDependencies": {
+    "vuepress": "^0.14.4"
+  }
+}
