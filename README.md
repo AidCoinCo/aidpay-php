@@ -249,7 +249,9 @@ result:
 
 ### createDonation
 
+::: warning
 ONLY FOR NO-PROFIT ACCOUNTS
+:::
 
 Description:
 + Create a donation.
@@ -282,6 +284,7 @@ result:
   "uuid": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
   "orderId": "O-12345",
   "status": "WAITING_FOR_DEPOSIT",
+  "paymentStatus": "PENDING",
   "email": "example@aidcoin.co",
   "depositAddress": "1HfL94JWjmmjroyAHTDhRQqUwZ7PR4JoUZ",
   "destination": "0x4Aa0f67D9A0666b9Dd0Ee6d397334903AE337e1E",
@@ -306,7 +309,9 @@ If you want to use the AidPay interface redirect your users to `orderLink`.
 
 ### createOrder
 
+::: warning
 ONLY FOR MERCHANT ACCOUNTS
+:::
 
 Description:
 + Create an order.
@@ -339,6 +344,7 @@ result:
   "uuid": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
   "orderId": "O-12345",
   "status": "WAITING_FOR_DEPOSIT",
+  "paymentStatus": "PENDING",
   "email": "example@aidcoin.co",
   "depositAddress": "1HfL94JWjmmjroyAHTDhRQqUwZ7PR4JoUZ",
   "destination": "0x4Aa0f67D9A0666b9Dd0Ee6d397334903AE337e1E",
@@ -369,7 +375,26 @@ Description:
 Params:
 + uuid: the unique id of the payment to search for
 
-Notes: status could be ['WAITING_FOR_DEPOSIT','DEPOSIT_RECEIVED','DEPOSIT_CONFIRMED','EXECUTED','REFUNDED','CANCELED','EXPIRED']
+::: warning NOTES
+Status could be 
+* WAITING_FOR_DEPOSIT
+* DEPOSIT_RECEIVED
+* DEPOSIT_CONFIRMED
+* EXECUTED
+* NEEDS_REFUND
+* REFUNDED
+* CANCELED
+* EXPIRED
+
+PaymentStatus could be 
+* PENDING
+* UNDERPAY_RECEIVED
+* UNDERPAY_CONFIRMED
+* PAYMENT_RECEIVED 
+* PAYMENT_CONFIRMED 
+* OVERPAY_RECEIVED 
+* OVERPAY_CONFIRMED
+:::
 
 ```php
 $aidPay->getStatus('aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee');
@@ -382,6 +407,7 @@ result:
   "uuid": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
   "orderId": "O-12345",
   "status": "WAITING_FOR_DEPOSIT",
+  "paymentStatus": "PENDING",
   "email": "example@aidcoin.co",
   "depositAddress": "1HfL94JWjmmjroyAHTDhRQqUwZ7PR4JoUZ",
   "destination": "0x4Aa0f67D9A0666b9Dd0Ee6d397334903AE337e1E",
@@ -406,8 +432,6 @@ Description:
 Params:
 + array with limit (default 12), offset (default 0) and an optional filters['status'] 
 
-Notes: status could be ['WAITING_FOR_DEPOSIT','DEPOSIT_RECEIVED','DEPOSIT_CONFIRMED','EXECUTED','REFUNDED','CANCELED','EXPIRED']
-
 ```php
 $aidPay->getOrders(['limit' => 2, 'offset' => 0, 'filters' => ['status' => 'WAITING_FOR_DEPOSIT']]);
 ```
@@ -421,6 +445,7 @@ result:
       "uuid": "ffffffff-gggg-hhhh-iiii-llllllllllll",
       "orderId": "O-67890",
       "status": "WAITING_FOR_DEPOSIT",
+      "paymentStatus": "PENDING",
       "email": "example@aidcoin.co",
       "depositAddress": "1HfL94JWjmmjroyAHTDhRQqUwZ7PR4JoUZ",
       "destination": "0x4Aa0f67D9A0666b9Dd0Ee6d397334903AE337e1E",
@@ -439,6 +464,7 @@ result:
       "uuid": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
       "orderId": "O-12345",
       "status": "WAITING_FOR_DEPOSIT",
+      "paymentStatus": "PENDING",
       "email": "example@aidcoin.co",
       "depositAddress": "1HfL94JWjmmjroyAHTDhRQqUwZ7PR4JoUZ",
       "destination": "0x4Aa0f67D9A0666b9Dd0Ee6d397334903AE337e1E",
@@ -483,6 +509,7 @@ result:
   "uuid": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
   "orderId": "O-12345",
   "status": "CANCELED",
+  "paymentStatus": "PENDING",
   "email": "example@aidcoin.co",
   "depositAddress": "1HfL94JWjmmjroyAHTDhRQqUwZ7PR4JoUZ",
   "destination": "0x4Aa0f67D9A0666b9Dd0Ee6d397334903AE337e1E",
@@ -506,7 +533,9 @@ When your payment has been `EXECUTED` you will receive a POST to the `return_url
 
 You should sign the call BODY with your API Secret and then check that it matches our provided sign in HEADERS.
 
-Notes: this is a Server To Server http call.
+::: warning NOTES
+This is a Server To Server http call.
+:::
 
 ```bash
 curl -X POST \
@@ -517,6 +546,7 @@ curl -X POST \
         "uuid": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
         "orderId": "O-12345",
         "status": "EXECUTED",
+        "paymentStatus": "PAYMENT_CONFIRMED",
         "email": "example@aidcoin.co",
         "depositAddress": "1HfL94JWjmmjroyAHTDhRQqUwZ7PR4JoUZ",
         "destination": "0x4Aa0f67D9A0666b9Dd0Ee6d397334903AE337e1E",
